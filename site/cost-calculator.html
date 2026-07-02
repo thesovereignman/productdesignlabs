@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Real Cost Calculator — Product Design Labs</title>
+<meta name="description" content="Honest planning ranges for building a hardware product: prototyping, respins, tooling, certification, and a realistic timeline floor. Every number sourced from the field.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <rect x="1.5" y="1.5" width="19" height="19" rx="2" stroke="#14B8A6" stroke-width="1.5"/>
+        <path d="M6 6l10 10M16 6L6 16" stroke="#14B8A6" stroke-width="1" opacity="0.5"/>
+      </svg>
+      Product Design Labs
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="vet-your-partner.html">Vet your partner</a>
+      <a href="index.html#model" class="cta">How it works</a>
+    </div>
+  </div>
+</nav>
+
+<header class="pagehead">
+  <div class="wrap">
+    <span class="eyebrow">Honest math · lead magnet</span>
+    <h1>The Real Cost Calculator</h1>
+    <p class="lead">The numbers most studios won't put in writing until it's too late. These are honest planning ranges from field data — not a quote, and deliberately not the comfortable number. Adjust the inputs; the math updates live.</p>
+  </div>
+</header>
+
+<section style="padding-top:56px;">
+  <div class="wrap">
+    <div class="calc">
+      <!-- INPUTS -->
+      <div class="inputs">
+        <div class="field">
+          <label for="category">Product category</label>
+          <select id="category">
+            <option value="accessory">Simple accessory / enclosure</option>
+            <option value="consumer" selected>Consumer electronics</option>
+            <option value="wearable">Wearable / biosensor</option>
+            <option value="iot">Industrial IoT</option>
+            <option value="robotics">Robotics / mechatronics</option>
+            <option value="medical">Medical / regulated</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Complexity</label>
+          <div class="seg" id="complexity">
+            <button data-v="low">Low</button>
+            <button data-v="med" class="active">Medium</button>
+            <button data-v="high">High</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="volume">First production run (units): <span id="volLabel" class="mono">250</span></label>
+          <input type="range" id="volume" min="50" max="5000" step="50" value="250">
+        </div>
+
+        <div class="field">
+          <label for="email">Get the full breakdown by email (optional)</label>
+          <input type="number" style="display:none">
+          <input type="email" id="email" placeholder="you@company.com"
+            style="width:100%; padding:12px 14px; font-size:1rem; border:1px solid var(--paper-line); border-radius:3px;">
+        </div>
+        <a class="btn btn-primary" style="width:100%; text-align:center;" href="#" id="emailBtn">Send me the detailed math</a>
+      </div>
+
+      <!-- OUTPUTS -->
+      <div class="outputs">
+        <div style="font-family:var(--mono); font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-dark-muted); margin-bottom:18px;">Honest planning range → production</div>
+
+        <div class="outrow"><span class="k">Prototyping &amp; engineering</span><span class="v" id="proto">—</span></div>
+        <div class="outrow"><span class="k">Respins <span id="respinCount" class="mono" style="color:var(--accent);">2.9×</span> budgeted</span><span class="v" id="respin">—</span></div>
+        <div class="outrow"><span class="k">Tooling</span><span class="v" id="tooling">—</span></div>
+        <div class="outrow"><span class="k">Certification &amp; compliance</span><span class="v" id="cert">—</span></div>
+        <div class="outrow total"><span class="k">Total to first batch</span><span class="v" id="total">—</span></div>
+
+        <div class="timeline-out">
+          <div style="font-family:var(--mono); font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-dark-muted); margin-bottom:8px;">Realistic timeline floor</div>
+          <div class="tl" id="timeline">—</div>
+          <div style="color:var(--text-dark-muted); font-size:0.9rem; margin-top:6px;" id="timelineNote"></div>
+        </div>
+
+        <p class="calc-note" id="fundingNote"></p>
+      </div>
+    </div>
+
+    <div class="calc-cta center" style="margin-top:44px;">
+      <p style="color:var(--text-light-muted); max-width:60ch; margin:0 auto 20px;">This is the honest range. The next step is your specific product — upload your requirements or a dev shop's quote and we'll pressure-test the real math with you.</p>
+      <a class="btn btn-primary" href="index.html#fit">Start an open engagement</a>
+    </div>
+
+    <p class="center mono" style="font-size:0.75rem; color:var(--text-light-muted); margin-top:40px; max-width:70ch; margin-left:auto; margin-right:auto;">
+      Sources: respin frequency &amp; cost (Cadstrom, EMA-EDA), stage durations (Instrumental, Titoma), production cost categories (Promwad), seed benchmarks (Pitchwise), SBIR (KeepYourEquity). Ranges are for planning, not a quote.
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© <span id="yr"></span> Product Design Labs · Open Product Development</div>
+    <div class="foot-links">
+      <a href="index.html">Home</a>
+      <a href="vet-your-partner.html">Vet your partner</a>
+      <a href="deck.html">Deck</a>
+    </div>
+  </div>
+</footer>
+
+<script src="calculator.js"></script>
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>

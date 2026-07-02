@@ -1,0 +1,25 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Node (if Codex adds a build step)
+node_modules/
+npm-debug.log*
+yarn-error.log*
+dist/
+build/
+.cache/
+
+# Secrets / env — never commit
+.env
+.env.*
+*.pem
+*.key
+
+# Deploy artifacts
+.vercel/
+.netlify/
+.wrangler/
