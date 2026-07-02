@@ -48,6 +48,17 @@
   .bet .probe { font-family:var(--mono); font-size:0.78rem; color:var(--accent-ink); margin-top:10px; }
   .bet span { color:var(--text-light-muted); font-size:0.93rem; }
   @media (max-width:680px){ .bets { grid-template-columns:1fr; } }
+  a.chip { text-decoration:none; cursor:pointer; }
+  a.chip:hover { border-color:var(--accent); color:var(--accent-ink); }
+  section.dark a.chip:hover { color:var(--accent); }
+  .reflist { display:grid; grid-template-columns:repeat(3,1fr); gap:30px 34px; margin-top:36px; }
+  @media (max-width:820px){ .reflist { grid-template-columns:1fr; } }
+  .refcol h4 { font-family:var(--mono); font-size:0.74rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent-ink); margin-bottom:14px; }
+  .refcol ul { list-style:none; }
+  .refcol li { margin-bottom:10px; line-height:1.35; }
+  .refcol a { color:var(--text-light); text-decoration:none; font-size:0.95rem; border-bottom:1px solid var(--paper-line); }
+  .refcol a:hover { color:var(--accent-ink); border-color:var(--accent); }
+  .refcol .who { color:var(--text-light-muted); font-size:0.85rem; }
 </style>
 </head>
 <body>
@@ -77,6 +88,7 @@
     <a href="#funding">Funding</a>
     <a href="#decide">Decisions</a>
     <a href="#next">90 days</a>
+    <a href="#refs">References</a>
   </div>
 </div>
 
@@ -165,10 +177,10 @@
     <span class="secnum">05 · Content engine</span>
     <h2 style="margin-top:12px;">Four pillars, one flywheel — every format is research-validated.</h2>
     <div class="pillars">
-      <div class="pillar"><b>Open Devlog</b><span>Numbered, struggle-first build-in-public posts. Open files as the audience magnet.</span><div class="src"><span class="chip">@jlcjak · r/hwstartups</span></div></div>
-      <div class="pillar"><b>The Burn Files</b><span>"How to vet a dev partner," the render trap, IP traps. We own the vocabulary of getting burned.</span><div class="src"><span class="chip">Retailbound · SUPALABS</span></div></div>
-      <div class="pillar"><b>Honest Math</b><span>The cost calculator + "budget 3 respins" essays. The primary lead magnet.</span><div class="src"><span class="chip">Cadstrom · Promwad</span></div></div>
-      <div class="pillar"><b>The Funding Ladder</b><span>SBIR → accelerators → pre-seed → seed. The month's top-engagement funding format.</span><div class="src"><span class="chip">@kseniam0s</span></div></div>
+      <div class="pillar"><b>Open Devlog</b><span>Numbered, struggle-first build-in-public posts. Open files as the audience magnet.</span><div class="src"><a class="chip" href="https://x.com/jlcjak/status/2069469248477380953" target="_blank" rel="noopener">Example: FRAMEOSCOPE ↗</a> <a class="chip" href="https://reddit.com/r/hwstartups" target="_blank" rel="noopener">r/hwstartups ↗</a></div></div>
+      <div class="pillar"><b>The Burn Files</b><span>"How to vet a dev partner," the render trap, IP traps. We own the vocabulary of getting burned.</span><div class="src"><a class="chip" href="vet-your-partner.html" target="_blank" rel="noopener">Our example: the checklist ↗</a> <a class="chip" href="https://retailbound.com/4-red-flags-to-watch-for-when-choosing-a-hardware-development-partner/" target="_blank" rel="noopener">Retailbound ↗</a></div></div>
+      <div class="pillar"><b>Honest Math</b><span>The cost calculator + "budget 3 respins" essays. The primary lead magnet.</span><div class="src"><a class="chip" href="cost-calculator.html" target="_blank" rel="noopener">Our example: the calculator ↗</a> <a class="chip" href="https://www.cadstrom.io/resources/the-hidden-cost-of-pcb-respins-why-90-of-first-prototypes-fail" target="_blank" rel="noopener">Cadstrom ↗</a></div></div>
+      <div class="pillar"><b>The Funding Ladder</b><span>SBIR → accelerators → pre-seed → seed. The month's top-engagement funding format.</span><div class="src"><a class="chip" href="https://x.com/kseniam0s/status/2063329757979099238" target="_blank" rel="noopener">Example: @kseniam0s thread ↗</a></div></div>
     </div>
     <p style="margin-top:24px; color:var(--text-dark-muted); font-size:0.95rem;">Loop: devlog earns attention → founder hits a trigger → checklist/calculator converts to the list → funding ladder nurtures → inbound services + studio deal flow.</p>
   </div>
@@ -240,6 +252,79 @@
       <div><b>Wk 11–13</b><span>First Burn File · Relic + BOMcheck probes reviewed</span></div>
     </div>
     <p style="margin-top:30px; font-family:var(--mono); font-size:0.85rem; color:var(--text-dark-muted); max-width:60ch;">The one-liner we're building toward: hardware development you can actually see. Nothing behind the curtain.</p>
+  </div>
+</section>
+
+<!-- REFERENCES & EXAMPLES -->
+<section id="refs">
+  <div class="wrap">
+    <span class="secnum">10 · References &amp; examples</span>
+    <h2 style="margin-top:12px;">Every piece we reference — open them after the call.</h2>
+    <p class="lead" style="max-width:60ch; margin-top:16px;">Our built assets to reuse as examples, the real build-in-public posts we're modeling, and the research each claim is grounded in. All open in a new tab.</p>
+    <div class="reflist">
+
+      <div class="refcol">
+        <h4>Our assets (the built examples)</h4>
+        <ul>
+          <li><a href="index.html" target="_blank" rel="noopener">Landing page ↗</a></li>
+          <li><a href="cost-calculator.html" target="_blank" rel="noopener">Real Cost Calculator ↗</a></li>
+          <li><a href="vet-your-partner.html" target="_blank" rel="noopener">Vet-Your-Partner checklist ↗</a></li>
+        </ul>
+      </div>
+
+      <div class="refcol">
+        <h4>Build-in-public examples we're modeling</h4>
+        <ul>
+          <li><a href="https://x.com/jlcjak/status/2069469248477380953" target="_blank" rel="noopener">FRAMEOSCOPE — open-source module, 1,025 likes</a> <span class="who">@jlcjak</span></li>
+          <li><a href="https://www.trendingtopics.eu/the-death-of-stealth-mode-inside-the-build-in-public-startup-boom/" target="_blank" rel="noopener">"The Death of Stealth Mode"</a> <span class="who">Trending Topics</span></li>
+          <li><a href="https://www.reddit.com/r/hwstartups/comments/1ugitpm/update_6_years_building_a_wearable_from_a/" target="_blank" rel="noopener">6-year wearable retrospective</a> <span class="who">r/hwstartups</span></li>
+          <li><a href="https://x.com/kseniam0s/status/2063329757979099238" target="_blank" rel="noopener">Post-YC funding lists</a> <span class="who">@kseniam0s</span></li>
+        </ul>
+      </div>
+
+      <div class="refcol">
+        <h4>Cost &amp; timeline evidence</h4>
+        <ul>
+          <li><a href="https://www.cadstrom.io/resources/the-hidden-cost-of-pcb-respins-why-90-of-first-prototypes-fail" target="_blank" rel="noopener">90% of first prototypes fail</a> <span class="who">Cadstrom</span></li>
+          <li><a href="https://www.ema-eda.com/ema-resources/blog/cost-of-pcb-design-spins-emd" target="_blank" rel="noopener">Respin ROI ($28–70K each)</a> <span class="who">EMA-EDA</span></li>
+          <li><a href="https://www.supalabs.co/en/blog/software-project-rescue-how-to-save-failing-development-2025/" target="_blank" rel="noopener">Project rescue economics</a> <span class="who">SUPALABS</span></li>
+          <li><a href="https://instrumental.com/resources/speed-up-shipment/why-hardware-products-get-delayed-evt-dvt-pvt-decoded-part-2/" target="_blank" rel="noopener">EVT/DVT/PVT stage floors</a> <span class="who">Instrumental</span></li>
+          <li><a href="https://promwad.com/news/how-much-does-it-cost-to-build-a-custom-embedded-system-in-2025-from-poc-to-mass-production" target="_blank" rel="noopener">Production cost categories</a> <span class="who">Promwad</span></li>
+        </ul>
+      </div>
+
+      <div class="refcol">
+        <h4>Funding evidence</h4>
+        <ul>
+          <li><a href="https://www.pitchwise.se/blog/median-seed-round-size-by-industry-in-2026-data" target="_blank" rel="noopener">Hardware seed benchmarks ($5–10M)</a> <span class="who">Pitchwise</span></li>
+          <li><a href="https://www.keepyourequity.co/post/the-sbir-program-in-2026-how-u-s-startups-get-up-to-30m-in-non-dilutive-funding-without-giving-u" target="_blank" rel="noopener">SBIR 2026 ($30M, non-dilutive)</a> <span class="who">KeepYourEquity</span></li>
+          <li><a href="https://techstartups.com/2026/06/30/venture-capital-startup-funding-roundup-june-30-2026/" target="_blank" rel="noopener">June closes (Etched $800M, etc.)</a> <span class="who">Tech Startups</span></li>
+        </ul>
+      </div>
+
+      <div class="refcol">
+        <h4>Studio &amp; positioning evidence</h4>
+        <ul>
+          <li><a href="https://www.sciencedirect.com/science/article/pii/S0007681325001417" target="_blank" rel="noopener">"Venture studios beyond the hype"</a> <span class="who">ScienceDirect</span></li>
+          <li><a href="https://www.highalpha.com/resources/venture-studio" target="_blank" rel="noopener">Venture studio category growth</a> <span class="who">High Alpha</span></li>
+          <li><a href="https://esinli.com/knowledge-base/startup-models/venture-studio-model/" target="_blank" rel="noopener">Studio equity norms (30–60%)</a> <span class="who">Esinli Capital</span></li>
+          <li><a href="https://retailbound.com/4-red-flags-to-watch-for-when-choosing-a-hardware-development-partner/" target="_blank" rel="noopener">Dev-partner red flags (DFM)</a> <span class="who">Retailbound</span></li>
+        </ul>
+      </div>
+
+      <div class="refcol">
+        <h4>Made-in-USA &amp; product bets</h4>
+        <ul>
+          <li><a href="https://www.newsweek.com/poll-consumers-american-made-price-increases-2080318" target="_blank" rel="noopener">~10% consumer premium ceiling</a> <span class="who">Newsweek</span></li>
+          <li><a href="https://x.com/USAFactoryNet/status/2071217094687948901" target="_blank" rel="noopener">8–14% landed-cost improvement</a> <span class="who">@USAFactoryNet</span></li>
+          <li><a href="https://www.gminsights.com/industry-analysis/automotive-3d-printing-market" target="_blank" rel="noopener">3D printing $6.7B → $23.2B</a> <span class="who">GM Insights</span></li>
+          <li><a href="https://all3dp.com/1/reverse-engineering-3d-printing-classic-car-parts/" target="_blank" rel="noopener">Reverse-engineering car parts</a> <span class="who">All3DP</span></li>
+          <li><a href="https://x.com/Revopoint3d/status/2071567948762755325" target="_blank" rel="noopener">Scan-to-print bracket demo</a> <span class="who">@Revopoint3d</span></li>
+        </ul>
+      </div>
+
+    </div>
+    <p style="margin-top:30px; color:var(--text-light-muted); font-size:0.92rem;">Full source list with every stat lives in <b>HARDWARE-MARKET-INTEL-BRIEF.md</b> (7 last-30-days research runs).</p>
   </div>
 </section>
 
