@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Vet a Hardware Development Partner — Product Design Labs</title>
+<meta name="description" content="The eight questions that separate an open development partner from a black box — built from documented hardware failure modes.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <rect x="1.5" y="1.5" width="19" height="19" rx="2" stroke="#FFFFFF" stroke-width="1.5"/>
+        <path d="M6 6l10 10M16 6L6 16" stroke="#FFFFFF" stroke-width="1" opacity="0.5"/>
+      </svg>
+      Product Design Labs
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="cost-calculator.html">Cost calculator</a>
+      <a href="index.html#model" class="cta">How it works</a>
+    </div>
+  </div>
+</nav>
+
+<header class="pagehead">
+  <div class="wrap narrow">
+    <span class="eyebrow">The Burn Files · No. 0</span>
+    <h1>How to vet a hardware development partner.</h1>
+    <p class="lead">Eight questions, built from documented failure modes. Ask them of any studio — including us. An open partner answers all eight without flinching. A black box gets uncomfortable around question three.</p>
+  </div>
+</header>
+
+<div class="prose">
+  <div class="wrap narrow">
+
+    <div class="check-item">
+      <div class="q">1. "Show me a design you took from prototype to volume manufacturing."</div>
+      <div class="why">The #1 documented hardware burn is the render trap — a beautiful prototype that was never designed to be built. A studio that skips design-for-manufacturing leaves you with something you can't produce. Ask for proof they've crossed the prototype-to-production chasm, not just made pretty things.</div>
+      <span class="flag">Red flag: portfolio is all renders and one-offs, no manufactured volume.</span>
+    </div>
+
+    <div class="check-item">
+      <div class="q">2. "What files do I receive, and when?"</div>
+      <div class="why">The right answer is "everything, at every milestone" — schematics, BOM, firmware source, test fixtures, transferred at each gate. The wrong answer is "at the end" or "on final payment." Withheld files are how ghosting turns into a total loss: if they stall, you have nothing to rebuild from.</div>
+      <span class="flag">Red flag: deliverables withheld until the project or payment completes.</span>
+    </div>
+
+    <div class="check-item">
+      <div class="q">3. "Is IP assigned to me, or licensed?"</div>
+      <div class="why">IP assignment is the single most-skipped clause in hardware contracts. "Licensed" means you paid for work you don't own. Every source-code-and-design-file theft story traces back to a missing assignment clause. Get explicit written assignment of all work product.</div>
+      <span class="flag">Red flag: contract says "license," is silent on IP, or reserves rights to the shop.</span>
+    </div>
+
+    <div class="check-item">
+      <div class="q">4. "How many board respins does your quote budget for?"</div>
+      <div class="why">90% of first prototypes miss their goals; the industry average is 2.9 respins per project at $28–70K of true cost each. A quote with zero respins budgeted isn't cheaper — it's the lowball that becomes 2–3× the price once reality hits. Honesty about respins is a feature, not a weakness.</div>
+      <span class="flag">Red flag: zero respins in the budget, or "we get it right the first time."</span>
+    </div>
+
+    <div class="check-item">
+      <div class="q">5. "Walk me through your EVT / DVT / PVT plan and minimum durations."</div>
+      <div class="why">Real stage gates have floors: EVT 4–5 weeks, DVT 8 weeks, PVT 4 weeks minimum. Beware "XVT" — the fantasy of entering a build with EVT-maturity parts while promising DVT results. Even simple products take 9–14 months to manufacturing-ready. A partner quoting months for quarters of work is selling you a timeline lie.</div>
+      <span class="flag">Red flag: compressed or hand-waved stage gates; a suspiciously fast timeline.</span>
+    </div>
+
+    <div class="check-item">
+      <div class="q">6. "What's your total cost model — including tooling and certification?"</div>
+      <div class="why">The prototype is cheap; the overrun lives everywhere else. Production PCB iterations run $50–200K, tooling $50–150K, certification $30–100K. First-time founders run out of budget at manufacturing prep because nobody itemized it. Ask for the whole model on page one, not just the engineering line.</div>
+      <span class="flag">Red flag: quote covers engineering only, tooling/cert/production are "TBD."</span>
+    </div>
+
+    <div class="check-item">
+      <div class="q">7. "Who single-sources parts, and how do you handle tolerances?"</div>
+      <div class="why">Single-sourcing components and skipping factory tolerance checks are the two named triggers for expensive respins. A good partner designs for supply resilience and validates tolerances before the build — not after a batch fails.</div>
+      <span class="flag">Red flag: no second-source strategy; tolerance checks aren't part of the process.</span>
+    </div>
+
+    <div class="check-item">
+      <div class="q">8. "If we part ways mid-project, what do I walk away with?"</div>
+      <div class="why">This question exposes everything at once. The open answer: "everything produced to date is already yours — files, IP, documentation — you could continue with anyone." The black-box answer gets vague. How a partner answers the break-up question tells you exactly how the relationship is structured.</div>
+      <span class="flag">Red flag: any answer that leaves you unable to continue without them.</span>
+    </div>
+
+    <h2>The one-line test</h2>
+    <p>If a studio can't put its respin math, its IP assignment, and its milestone-deliverable schedule <em>in writing before you sign</em>, you're looking at a black box. The whole point of open product development is that trust doesn't require faith — it's inspectable.</p>
+
+    <div class="center" style="margin-top:44px;">
+      <a class="btn btn-primary" href="cost-calculator.html">See the real cost math</a>
+      <a class="btn btn-ghost" href="index.html#fit" style="margin-left:12px;">Talk to PDL</a>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>© <span id="yr"></span> Product Design Labs · Open Product Development</div>
+    <div class="foot-links">
+      <a href="index.html">Home</a>
+      <a href="cost-calculator.html">Cost calculator</a>
+      <a href="deck.html">Deck</a>
+    </div>
+  </div>
+</footer>
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
