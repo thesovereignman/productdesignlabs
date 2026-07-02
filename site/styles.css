@@ -5,34 +5,33 @@
    ========================================================================== */
 
 :root {
-  /* Ink / dark (the black box) */
-  --ink: #12151A;
-  --ink-2: #1A1F26;
-  --ink-3: #232932;
-  --ink-line: #2C333D;
+  /* Black and white, no frills */
+  --ink: #111111;
+  --ink-2: #1A1A1A;
+  --ink-3: #262626;
+  --ink-line: #333333;
 
-  /* Paper / light (the glass box) */
-  --paper: #F5F4EF;
+  --paper: #FFFFFF;
   --paper-2: #FFFFFF;
-  --paper-line: #DEDBD1;
+  --paper-line: #E4E4E4;
 
   /* Text */
-  --text-dark: #EAECEF;      /* on ink */
-  --text-dark-muted: #9AA3AD;
-  --text-light: #1A1F26;     /* on paper */
-  --text-light-muted: #5E6873;
+  --text-dark: #F2F2F2;      /* on ink */
+  --text-dark-muted: #A0A0A0;
+  --text-light: #111111;     /* on paper */
+  --text-light-muted: #5C5C5C;
 
-  /* Accent — teal reads as signal / open / go */
-  --accent: #14B8A6;
-  --accent-deep: #0E8C7E;
-  --accent-ink: #0B6157;
-  --amber: #D9922B;          /* source chips, warnings — used sparingly */
+  /* "Accent" is now just emphasis: black on light, white on dark (handled per-rule) */
+  --accent: #111111;
+  --accent-deep: #000000;
+  --accent-ink: #111111;
+  --amber: #111111;
 
   --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
   --mono: "SF Mono", ui-monospace, "JetBrains Mono", "Roboto Mono", Menlo, Consolas, monospace;
 
   --maxw: 1080px;
-  --radius: 3px;
+  --radius: 0;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -75,11 +74,6 @@ section.dark {
   background: var(--ink);
   color: var(--text-dark);
   border-bottom: 1px solid var(--ink-line);
-  background-image:
-    linear-gradient(var(--ink-2) 1px, transparent 1px),
-    linear-gradient(90deg, var(--ink-2) 1px, transparent 1px);
-  background-size: 44px 44px;
-  background-position: center;
 }
 section.dark .wrap { position: relative; }
 
@@ -247,3 +241,40 @@ footer .foot-links { display:flex; gap: 22px; flex-wrap: wrap; }
 .mono { font-family: var(--mono); }
 .center { text-align:center; }
 .mt0 { margin-top:0; }
+
+/* ============================================================
+   Black-and-white overrides — emphasis = black on light, white on dark
+   ============================================================ */
+.nav { background: rgba(17,17,17,0.94); }
+
+.btn-primary { background: #111; color: #fff; }
+.btn-primary:hover { background: #000; }
+section.dark .btn-primary { background: #fff; color: #111; }
+section.dark .btn-primary:hover { background: #DADADA; }
+
+.btn-ghost { color: var(--text-dark); border-color: #444; }
+.btn-ghost:hover { border-color: #fff; color: #fff; }
+section:not(.dark) .btn-ghost { color: #111; border-color: #111; }
+section:not(.dark) .btn-ghost:hover { background: #111; color: #fff; border-color: #111; }
+
+.nav-links a.cta { background: #fff; color: #111; }
+.nav-links a.cta:hover { background: #CFCFCF; color: #111; }
+
+section.dark .eyebrow, .pagehead .eyebrow { color: #fff; }
+
+.chip { color: #E6E6E6; border-color: #444; }
+section:not(.dark) .chip { color: #333; border-color: #CCC; }
+
+.sig .tag { color: #fff; }
+
+.seg button.active { background: #111; border-color: #111; color: #fff; }
+.outrow.total .v { color: #fff; }
+.timeline-out .tl { color: #fff; }
+.field input[type=range] { accent-color: #111; }
+
+.check-item .flag { color: #333; }
+
+.split .col.no { background: #F5F5F5; border-left-color: #CCC; }
+.split .col.no li::before { color: #999; }
+
+footer a:hover { color: #fff; }
