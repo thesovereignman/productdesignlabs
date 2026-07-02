@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PDL — The Plan (team walkthrough)</title>
+<meta name="description" content="The Product Design Labs plan on one page: the market evidence, the Open Product Development positioning, the live examples, the content engine, product bets, funding, and what we decide on this call.">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .planhead { padding: 88px 0 56px; }
+  .planhead h1 { max-width: 18ch; }
+  .subnav { position: sticky; top: 60px; z-index: 40; background: rgba(18,21,26,0.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--ink-line); }
+  .subnav .wrap { display:flex; gap: 20px; overflow-x:auto; height: 46px; align-items:center; padding-top:0; padding-bottom:0; }
+  .subnav a { color: var(--text-dark-muted); text-decoration:none; font-family:var(--mono); font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; white-space:nowrap; }
+  .subnav a:hover { color: var(--accent); }
+  .secnum { font-family:var(--mono); color:var(--accent-ink); font-size:0.8rem; letter-spacing:0.1em; }
+  section.dark .secnum { color: var(--accent); }
+  .demo-frame { border:1px solid var(--paper-line); border-radius:8px; overflow:hidden; box-shadow:0 12px 40px rgba(0,0,0,0.12); background:#fff; margin-top:8px; }
+  .demo-bar { background:#e9e7e0; border-bottom:1px solid var(--paper-line); padding:9px 14px; display:flex; align-items:center; gap:8px; font-family:var(--mono); font-size:0.75rem; color:var(--text-light-muted); }
+  .demo-bar .dot { width:10px; height:10px; border-radius:50%; background:#c9c6bd; display:inline-block; }
+  .demo-bar .url { margin-left:10px; }
+  .demo-frame iframe { width:100%; height:520px; border:0; display:block; background:#fff; }
+  .demo-grid { display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:36px; }
+  @media (max-width:820px){ .demo-grid { grid-template-columns:1fr; } }
+  .demo-cap { font-size:0.95rem; color:var(--text-light-muted); margin:14px 0 6px; }
+  .demo-cap b { color:var(--text-light); }
+  .decide { border:1px solid var(--paper-line); border-left:3px solid var(--amber); border-radius:3px; padding:24px; margin-top:16px; background:#FFFDF7; }
+  .decide .k { font-family:var(--mono); font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:#A66B15; }
+  .decide h3 { margin:8px 0; }
+  .decide p { color:var(--text-light-muted); font-size:0.96rem; }
+  .pill-row { display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; }
+  .pill { font-family:var(--mono); font-size:0.72rem; border:1px solid var(--paper-line); border-radius:20px; padding:5px 12px; color:var(--text-light-muted); }
+  .pill.reco { border-color:var(--accent); color:var(--accent-ink); background:#F0FBF9; }
+  .plan90 { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:36px; }
+  .plan90 > div { border-left:3px solid var(--accent); padding:6px 0 6px 16px; }
+  .plan90 b { display:block; font-family:var(--mono); color:var(--accent-ink); margin-bottom:8px; }
+  .plan90 span { color:var(--text-light-muted); font-size:0.92rem; }
+  @media (max-width:820px){ .plan90 { grid-template-columns:1fr 1fr; } }
+  .pillars { display:grid; grid-template-columns:repeat(2,1fr); gap:18px; margin-top:36px; }
+  .pillar { border:1px solid var(--ink-line); border-radius:3px; padding:24px; background:var(--ink-2); }
+  .pillar b { color:#fff; display:block; margin-bottom:6px; font-size:1.05rem; }
+  .pillar span { color:var(--text-dark-muted); font-size:0.95rem; }
+  .pillar .src { margin-top:12px; }
+  @media (max-width:680px){ .pillars { grid-template-columns:1fr; } }
+  .bets { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:36px; }
+  .bet { border:1px solid var(--paper-line); border-top:3px solid var(--accent); border-radius:3px; padding:22px; }
+  .bet b { display:block; margin-bottom:4px; }
+  .bet .probe { font-family:var(--mono); font-size:0.78rem; color:var(--accent-ink); margin-top:10px; }
+  .bet span { color:var(--text-light-muted); font-size:0.93rem; }
+  @media (max-width:680px){ .bets { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="plan.html">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="1.5" y="1.5" width="19" height="19" rx="2" stroke="#14B8A6" stroke-width="1.5"/><path d="M6 6l10 10M16 6L6 16" stroke="#14B8A6" stroke-width="1" opacity="0.5"/></svg>
+      Product Design Labs
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Live site</a>
+      <a href="cost-calculator.html">Calculator</a>
+      <a href="#decide" class="cta">What we decide today</a>
+    </div>
+  </div>
+</nav>
+
+<div class="subnav">
+  <div class="wrap">
+    <a href="#tldr">TL;DR</a>
+    <a href="#evidence">The evidence</a>
+    <a href="#positioning">Positioning</a>
+    <a href="#examples">See it live</a>
+    <a href="#content">Content engine</a>
+    <a href="#bets">Product bets</a>
+    <a href="#funding">Funding</a>
+    <a href="#decide">Decisions</a>
+    <a href="#next">90 days</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="dark planhead">
+  <div class="wrap">
+    <span class="eyebrow">Internal plan · team walkthrough</span>
+    <h1>The plan for Product Design Labs.</h1>
+    <p class="lead" style="max-width:60ch;">Built on 30 days of market evidence. This is our own working strategy — where we position, what we ship, and the two calls we need to make today. Scroll top to bottom; the live examples are embedded.</p>
+  </div>
+</section>
+
+<!-- TLDR -->
+<section id="tldr">
+  <div class="wrap narrow">
+    <span class="secnum">01 · TL;DR</span>
+    <h2 style="margin-top:12px;">One sentence, then the whole thing.</h2>
+    <p class="lead" style="margin-top:20px; color:var(--text-light);"><b>PDL is an open product development studio: hardware built where the client can watch — design-for-manufacturing (DFM) from day one, every file yours at every milestone, and the real cost math before you sign.</b></p>
+    <p style="margin-top:18px; color:var(--text-light-muted);">Every hardware research run pointed at the same customer: a founder who underestimates cost and time, can't evaluate vendors, and is terrified of paying for something that can't be built. Our enemy isn't a competitor — it's <b>black-box product development</b>, the industry model where opacity is the business model. We win by being the glass box. Today we ratify the category name and pick how far we open the box.</p>
+  </div>
+</section>
+
+<!-- EVIDENCE -->
+<section class="dark" id="evidence">
+  <div class="wrap">
+    <span class="secnum">02 · The evidence</span>
+    <h2 style="margin-top:12px;">What the last-30-days research actually found.</h2>
+    <p class="lead" style="max-width:60ch; margin-top:18px;">Seven research runs across Reddit, X, and GitHub, plus field data. Every number below is sourced — we practice the transparency we sell.</p>
+    <div class="statwall">
+      <div class="stat"><div class="num">90%</div><div class="lbl">of first prototypes fail to meet their goals.</div><span class="chip">Cadstrom</span></div>
+      <div class="stat"><div class="num">2.9×</div><div class="lbl">board respins per project — up to $70K true cost each.</div><span class="chip">EMA-EDA</span></div>
+      <div class="stat"><div class="num">2–3×</div><div class="lbl">the quote is what the lowest bid actually costs after rework.</div><span class="chip">SUPALABS</span></div>
+    </div>
+    <div class="statwall" style="margin-top:1px;">
+      <div class="stat"><div class="num">$5–10M</div><div class="lbl">hardware seed rounds — 2–3× software. Etched raised $800M in June.</div><span class="chip">Pitchwise</span></div>
+      <div class="stat"><div class="num">$30M</div><div class="lbl">non-dilutive SBIR ceiling (Strategic Breakthrough), reauthorized to 2031.</div><span class="chip">KeepYourEquity</span></div>
+      <div class="stat"><div class="num">70%</div><div class="lbl">of venture-studio ventures fail — built in isolation from real customer problems.</div><span class="chip">ScienceDirect</span></div>
+    </div>
+    <p style="margin-top:28px; color:var(--text-dark-muted); font-size:0.95rem;">Other load-bearing signals: build-in-public has arrived in hardware (an open-source oscilloscope module was the month's top post, 1,025 likes <span class="chip">@jlcjak</span>); made-in-USA carries a 30–60% production premium against a ~10% consumer ceiling <span class="chip">Newsweek</span>; and scan-to-print for discontinued parts is a real, unbranded niche in a market heading from $6.7B to $23.2B by 2035 <span class="chip">GM Insights</span>.</p>
+  </div>
+</section>
+
+<!-- POSITIONING -->
+<section id="positioning">
+  <div class="wrap">
+    <span class="secnum">03 · Positioning</span>
+    <h2 style="margin-top:12px;">Black box → glass box.</h2>
+    <div class="commit" style="margin-top:32px;">
+      <div class="cell"><span class="n">COMMITMENT 01</span><h3>Built to be manufactured</h3><p>DFM from day one. Prototype-to-production is designed in, not discovered at the end.</p><div class="kills">Kills: the render trap</div></div>
+      <div class="cell"><span class="n">COMMITMENT 02</span><h3>Yours at every milestone</h3><p>Schematics, BOM, firmware source, test fixtures at every gate. IP assigned by default.</p><div class="kills">Kills: withheld files &amp; IP traps</div></div>
+      <div class="cell"><span class="n">COMMITMENT 03</span><h3>Honest stage gates</h3><p>Real EVT 4–5wk / DVT 8wk / PVT 4wk minimums. No fantasy schedules. <span class="chip">Instrumental</span></p><div class="kills">Kills: the timeline lie</div></div>
+      <div class="cell"><span class="n">COMMITMENT 04</span><h3>Math in writing</h3><p>The true cost model — respin budget included — on page one of the proposal.</p><div class="kills">Kills: the lowball</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXAMPLES -->
+<section style="background:var(--paper-2);" id="examples">
+  <div class="wrap">
+    <span class="secnum">04 · See it live</span>
+    <h2 style="margin-top:12px;">The actual pages — scroll them right here.</h2>
+    <p class="lead" style="max-width:58ch; margin-top:16px;">These are the real, deployable pages, embedded live. Click any to open full-screen in a new tab.</p>
+
+    <p class="demo-cap"><b>The landing page</b> — the full Open Product Development pitch to hardware founders. <a href="index.html" target="_blank">Open ↗</a></p>
+    <div class="demo-frame">
+      <div class="demo-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">pdl.serviceghost.dev</span></div>
+      <iframe src="index.html" loading="lazy" title="Landing page"></iframe>
+    </div>
+
+    <div class="demo-grid">
+      <div>
+        <p class="demo-cap"><b>The Real Cost Calculator</b> — our lead magnet. Live math from the research. <a href="cost-calculator.html" target="_blank">Open ↗</a></p>
+        <div class="demo-frame"><div class="demo-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">/cost-calculator</span></div><iframe src="cost-calculator.html" loading="lazy" title="Cost calculator"></iframe></div>
+      </div>
+      <div>
+        <p class="demo-cap"><b>Vet-Your-Partner checklist</b> — the content asset that names the burn. <a href="vet-your-partner.html" target="_blank">Open ↗</a></p>
+        <div class="demo-frame"><div class="demo-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">/vet-your-partner</span></div><iframe src="vet-your-partner.html" loading="lazy" title="Checklist"></iframe></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENT ENGINE -->
+<section class="dark" id="content">
+  <div class="wrap">
+    <span class="secnum">05 · Content engine</span>
+    <h2 style="margin-top:12px;">Four pillars, one flywheel — every format is research-validated.</h2>
+    <div class="pillars">
+      <div class="pillar"><b>Open Devlog</b><span>Numbered, struggle-first build-in-public posts. Open files as the audience magnet.</span><div class="src"><span class="chip">@jlcjak · r/hwstartups</span></div></div>
+      <div class="pillar"><b>The Burn Files</b><span>"How to vet a dev partner," the render trap, IP traps. We own the vocabulary of getting burned.</span><div class="src"><span class="chip">Retailbound · SUPALABS</span></div></div>
+      <div class="pillar"><b>Honest Math</b><span>The cost calculator + "budget 3 respins" essays. The primary lead magnet.</span><div class="src"><span class="chip">Cadstrom · Promwad</span></div></div>
+      <div class="pillar"><b>The Funding Ladder</b><span>SBIR → accelerators → pre-seed → seed. The month's top-engagement funding format.</span><div class="src"><span class="chip">@kseniam0s</span></div></div>
+    </div>
+    <p style="margin-top:24px; color:var(--text-dark-muted); font-size:0.95rem;">Loop: devlog earns attention → founder hits a trigger → checklist/calculator converts to the list → funding ladder nurtures → inbound services + studio deal flow.</p>
+  </div>
+</section>
+
+<!-- PRODUCT BETS -->
+<section id="bets">
+  <div class="wrap">
+    <span class="secnum">06 · Product bets</span>
+    <h2 style="margin-top:12px;">Cheap probes, kill-criteria up front.</h2>
+    <div class="bets">
+      <div class="bet"><b>Relic — scan-to-print discontinued parts</b><span>Classic-car &amp; legacy parts that no longer exist. Unbranded niche; file library compounds. <span class="chip">All3DP · Creaform</span></span><div class="probe">Probe: $99 offer to forums · 2wk · &lt;$500 · pass = 10 orders</div></div>
+      <div class="bet"><b>BOMcheck — the calculator as product</b><span>Free calculator → paid quote-review tier. Ships free anyway as the lead magnet.</span><div class="probe">Probe: 20+ organic "review my real quote" requests</div></div>
+      <div class="bet"><b>Micro-factory — small-batch domestic</b><span>The prototype-to-production leap, no offshore minimums. Automation collapsing factory cost. <span class="chip">@lagerskoy</span></span><div class="probe">Probe: broker 3 runs through partners, margin holds</div></div>
+      <div class="bet"><b>Open flagship — build-in-public product</b><span>One open-source product as audience + proof. Marketing in a product costume.</span><div class="probe">Held until the content engine is live</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FUNDING -->
+<section class="dark" id="funding">
+  <div class="wrap">
+    <span class="secnum">07 · Funding ops</span>
+    <h2 style="margin-top:12px;">The ladder — and our capability on it.</h2>
+    <div class="gates" style="grid-template-columns:repeat(5,1fr);">
+      <div class="gate" style="background:var(--ink-2); border-color:var(--ink-line);"><div class="stage" style="color:#fff;">SBIR I</div><div class="dur">$200–305K</div><ul><li style="color:var(--text-dark-muted);">non-dilutive</li></ul></div>
+      <div class="gate" style="background:var(--ink-2); border-color:var(--ink-line);"><div class="stage" style="color:#fff;">SBIR II</div><div class="dur">$2M</div><ul><li style="color:var(--text-dark-muted);">non-dilutive</li></ul></div>
+      <div class="gate" style="background:var(--ink-2); border-color:var(--ink-line);"><div class="stage" style="color:#fff;">Accel.</div><div class="dur">$550K+</div><ul><li style="color:var(--text-dark-muted);">HAX / IndieBio</li></ul></div>
+      <div class="gate" style="background:var(--ink-2); border-color:var(--ink-line);"><div class="stage" style="color:#fff;">Pre-seed</div><div class="dur">$100–500K</div><ul><li style="color:var(--text-dark-muted);">hardware funds</li></ul></div>
+      <div class="gate" style="background:var(--ink-2); border-color:var(--ink-line);"><div class="stage" style="color:#fff;">Seed</div><div class="dur">$5–10M</div><ul><li style="color:var(--text-dark-muted);">2–3× software</li></ul></div>
+    </div>
+    <p style="margin-top:26px; color:var(--text-dark-muted); font-size:0.95rem;">SBIR reauthorized to 2031, new rules favor first-timers, non-dilutive. Grant-ready docs are a byproduct of our open process. Our capability: a funding-path memo on every project + an SBIR pilot. <span class="chip">KeepYourEquity</span></p>
+  </div>
+</section>
+
+<!-- DECISIONS -->
+<section id="decide">
+  <div class="wrap narrow">
+    <span class="secnum">08 · What we decide on this call</span>
+    <h2 style="margin-top:12px;">Two calls, then we ship.</h2>
+
+    <div class="decide">
+      <div class="k">Decision 1 · Category name</div>
+      <h3>Open Product Development, or Glass-Box Product Development?</h3>
+      <p>Same enemy, same strategy — this changes vocabulary, not the plan. Jason favors A. Switching later is a find-and-replace.</p>
+      <div class="pill-row"><span class="pill reco">A · Open Product Development (Jason's pick)</span><span class="pill">B · Glass-Box Product Development</span></div>
+    </div>
+
+    <div class="decide">
+      <div class="k">Decision 2 · How far we open the box</div>
+      <h3>Pick the openness tier — the positioning dies if practice doesn't match.</h3>
+      <p>Tier 1: contractual (files + IP + respin budget in the SOW, private). Tier 2: published process (calculator, stage floors, deliverable manifest — recommended floor). Tier 3: build in public (devlogs of real projects).</p>
+      <div class="pill-row"><span class="pill">Tier 1 · Contractual</span><span class="pill reco">Tier 2 · Published (recommended)</span><span class="pill">Tier 3 · Build in public</span></div>
+    </div>
+
+    <p style="margin-top:20px; color:var(--text-light-muted); font-size:0.95rem;">Also open: the proof beat (a live devlog + 1–2 case studies with numbers from our own builds), and the product-revenue threshold at which we stop taking new client work.</p>
+  </div>
+</section>
+
+<!-- 90 DAYS -->
+<section class="dark" id="next">
+  <div class="wrap">
+    <span class="secnum">09 · The 90 days</span>
+    <h2 style="margin-top:12px;">What ships, when. Owners assigned on this call.</h2>
+    <div class="plan90">
+      <div><b>Wk 1–2</b><span>Vet-your-partner checklist · Devlog #1</span></div>
+      <div><b>Wk 3–6</b><span>Cost calculator live · "budget 3 respins" essay</span></div>
+      <div><b>Wk 7–10</b><span>r/hwstartups retrospective · Funding Ladder guide</span></div>
+      <div><b>Wk 11–13</b><span>First Burn File · Relic + BOMcheck probes reviewed</span></div>
+    </div>
+    <p style="margin-top:30px; font-family:var(--mono); font-size:0.85rem; color:var(--text-dark-muted); max-width:60ch;">The one-liner we're building toward: hardware development you can actually see. Nothing behind the curtain.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© <span id="yr"></span> Product Design Labs · Internal plan · grounded in 7 last-30-days research runs</div>
+    <div class="foot-links">
+      <a href="index.html">Live site</a>
+      <a href="cost-calculator.html">Calculator</a>
+      <a href="vet-your-partner.html">Checklist</a>
+    </div>
+  </div>
+</footer>
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
