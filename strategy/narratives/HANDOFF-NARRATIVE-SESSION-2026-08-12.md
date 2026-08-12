@@ -219,4 +219,6 @@ Next: [pick one] finalize Trinion Google Doc share link / expand Whitfield to 5 
 ---
 
 **End of handoff.**  
-Local path for this file: `_research/production/HANDOFF-NARRATIVE-SESSION-2026-08-12.md`
+Local path: `_research/production/HANDOFF-NARRATIVE-SESSION-2026-08-12.md`  
+**GitHub (productdesignlabs):** https://github.com/thesovereignman/productdesignlabs/tree/main/strategy/narratives  
+Commit: `ad9a282` on `main`
