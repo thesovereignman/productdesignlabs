@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" role="img" aria-label="PDL">
+  <rect width="16" height="16" fill="#111111"/>
+  <g fill="none" stroke="#FFFFFF" stroke-width="1.5">
+    <path d="M9.5 2.75H2.75v10.5H9.5"/>
+    <path d="M9.5 2.75L13.25 5v6l-3.75 2.25z"/>
+  </g>
+  <rect x="5" y="6.5" width="3" height="3" fill="#FFFFFF"/>
+</svg>

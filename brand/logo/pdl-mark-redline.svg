@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Product Design Labs">
+  <title>Product Design Labs — the open box, redline contents</title>
+  <g fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter">
+    <path d="M30 4H4v40h26"/>
+    <path d="M30 4l14 8v24l-14 8z"/>
+  </g>
+  <rect x="12" y="18" width="12" height="12" fill="#D93A2B"/>
+</svg>

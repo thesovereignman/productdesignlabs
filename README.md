@@ -12,6 +12,7 @@ The Product Design Labs strategy + marketing site, built from market research. T
 | `strategy/03-product-thesis-backlog.md` | Product bets with cheap validation probes |
 | `strategy/04-funding-ops.md` | The funding ladder + SBIR-as-a-service capability |
 | `strategy/05-pitch-deck-design.md` | Internal strategy-deck spec (drives `site/deck.html`) |
+| `brand/` | The brand kit — guidelines, design tokens, logo SVGs, imagery manifest |
 | `site/` | The deployable static site (see `site/README.md`) |
 
 ## Run the site locally
@@ -28,10 +29,33 @@ python3 -m http.server 8000      # or: npx serve
 - `cost-calculator.html` — the Real Cost Calculator (lead magnet)
 - `vet-your-partner.html` — the checklist content asset
 - `deck.html` — the strategy deck (arrows / space / F for fullscreen)
+- `brand.html` — the visual brand kit (noindex; the reference everyone actually looks at)
 
 ## Deploy to a serviceghost.dev subdomain
 
 Point Cloudflare Pages / Netlify / Vercel at the `site/` folder (build command: none, output dir: `site`), add the custom subdomain (e.g. `pdl.serviceghost.dev`), and add the CNAME to your serviceghost.dev DNS. Full notes in `site/README.md`.
+
+## Brand kit
+
+`brand/BRAND-KIT.md` is the written system; `site/brand.html` is the visual one. Both derive from
+`strategy/01-positioning-and-site-copy.md` — nothing in the kit is a taste call that isn't traceable
+to a positioning commitment.
+
+| Path | What it is |
+|---|---|
+| `brand/BRAND-KIT.md` | Guidelines: platform, logo, colour, type, layout, imagery, voice, applications, accessibility |
+| `brand/tokens.css` | Design tokens, the single source of truth for colour/type/space (`site/tokens.css` is a generated deploy copy) |
+| `brand/logo/` | Six SVGs — mark, redline mark, two lockups, app icon, favicon |
+| `brand/assets/README.md` | Imagery library: prompts, job IDs and retrieval steps for the 10 generated reference plates |
+
+Headlines: mono-first palette with **one** accent (redline `#D93A2B`, the DFM reviewer's pen, under 3%
+of any surface) · Inter Tight / Inter / JetBrains Mono · zero radius, zero shadows · **if it is a
+measurement, it is mono** · the render is the enemy's medium, so imagery is documentary, captioned,
+and never an AI image passed off as a PDL build.
+
+Open items are tracked in `brand/BRAND-KIT.md` §11 — the deck still carries the old teal accent, fonts
+aren't self-hosted yet, and PDL has no first-party bench photography, which is the same gap the
+positioning doc flags as the weak proof beat.
 
 ## Open decisions (see strategy/01 Part 6)
 
