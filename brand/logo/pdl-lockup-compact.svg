@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268 32" width="268" height="32" role="img" aria-label="Product Design Labs">
+  <title>Product Design Labs</title>
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="miter" transform="translate(0,2) scale(0.583)">
+    <path d="M30 4H4v40h26"/>
+    <path d="M30 4l14 8v24l-14 8z"/>
+  </g>
+  <rect x="7" y="12.5" width="7" height="7" fill="currentColor"/>
+  <text x="42" y="22" font-family="Inter Tight, Inter, Helvetica, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="-0.4" fill="currentColor">Product Design Labs</text>
+</svg>

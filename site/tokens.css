@@ -1,0 +1,93 @@
+/* GENERATED COPY — do not edit.
+   Canonical source: brand/tokens.css
+   This copy exists because vercel.json rewrites /(.*) to /site/$1, so only
+   files inside site/ are reachable in production. Re-copy after any token change:
+     cp brand/tokens.css site/tokens.css   (then re-add this header)
+*/
+/* ==========================================================================
+   Product Design Labs — Brand Tokens
+   Open Product Development. Engineering-document honesty. Anti-render.
+   Drop-in: <link rel="stylesheet" href="tokens.css"> before your stylesheet.
+   Single source of truth — site/styles.css and site/deck.css should consume
+   these names, not re-declare hex values.
+   ========================================================================== */
+
+:root {
+  /* --- Core: ink & paper -------------------------------------------------
+     The brand is mono-first. Colour is information, never decoration. */
+  --pdl-ink:        #111111;  /* primary. type, rules, the mark */
+  --pdl-ink-2:      #1A1A1A;  /* raised surface on ink */
+  --pdl-ink-3:      #262626;  /* pressed / inset surface on ink */
+  --pdl-ink-line:   #333333;  /* hairline on ink */
+  --pdl-black:      #000000;  /* the black box. used only to depict the enemy */
+
+  --pdl-paper:      #FFFFFF;  /* primary surface */
+  --pdl-paper-2:    #FAFAFA;  /* subtle panel on paper */
+  --pdl-paper-line: #E4E4E4;  /* hairline on paper */
+
+  /* --- Grey scale (drawing weights) -------------------------------------- */
+  --pdl-grey-90: #262626;
+  --pdl-grey-70: #4A4A4A;
+  --pdl-grey-60: #5C5C5C;   /* muted body on paper */
+  --pdl-grey-40: #A0A0A0;   /* muted body on ink */
+  --pdl-grey-20: #D4D4D4;
+  --pdl-grey-10: #EDEDED;
+
+  /* --- Redline: the one accent -------------------------------------------
+     PDL's accent is the DFM reviewer's pen. It marks what a black-box studio
+     would have hidden: a callout, a correction, a cost, a failure. Never a
+     background, never a mood, never "brand colour" on a button that says
+     nothing. Target: under 3% of any surface. */
+  --pdl-redline:      #D93A2B;
+  --pdl-redline-deep: #A62A1E;  /* on paper, for AA text at small sizes */
+  --pdl-redline-tint: #FBECEA;  /* callout fill on paper only */
+
+  /* --- Status (product UI only, never marketing) ------------------------- */
+  --pdl-verified: #0F7A6B;  /* gate passed / files transferred */
+  --pdl-caution:  #B87503;  /* respin risk / estimate, not a quote */
+
+  /* --- Type ---------------------------------------------------------------
+     Inter Tight for headline, Inter for body, JetBrains Mono for anything
+     that is a measurement: eyebrows, stats, part numbers, dates, costs. */
+  --pdl-display: "Inter Tight", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --pdl-sans:    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --pdl-mono:    "JetBrains Mono", "SF Mono", ui-monospace, "Roboto Mono", Menlo, Consolas, monospace;
+
+  /* Type scale — 1.25 major third, fluid at the top end */
+  --pdl-t-hero:  clamp(2.4rem, 6vw, 4.2rem);
+  --pdl-t-h2:    clamp(1.7rem, 4vw, 2.7rem);
+  --pdl-t-h3:    1.25rem;
+  --pdl-t-lead:  1.2rem;
+  --pdl-t-body:  1.0625rem;  /* 17px */
+  --pdl-t-small: 0.875rem;
+  --pdl-t-micro: 0.72rem;    /* mono eyebrow / caption */
+
+  --pdl-track-display: -0.02em;  /* headlines tighten */
+  --pdl-track-hero:    -0.03em;
+  --pdl-track-mono:     0.18em;  /* mono eyebrows open up */
+  --pdl-leading-tight: 1.12;
+  --pdl-leading-body:  1.55;
+
+  /* --- Geometry -----------------------------------------------------------
+     Zero radius everywhere. Drawings have corners. Rounded corners are the
+     visual grammar of the consumer-gadget render we are arguing against. */
+  --pdl-radius: 0;
+  --pdl-rule:      1px;   /* hairline — the default */
+  --pdl-rule-bold: 2px;   /* section break / the mark's stroke */
+
+  /* 8px base grid */
+  --pdl-space-1: 4px;   --pdl-space-2: 8px;   --pdl-space-3: 16px;
+  --pdl-space-4: 24px;  --pdl-space-5: 40px;  --pdl-space-6: 64px;
+  --pdl-space-7: 96px;
+
+  --pdl-maxw: 1080px;
+  --pdl-maxw-read: 760px;   /* ~72ch, long-form */
+
+  /* --- Motion -------------------------------------------------------------
+     Things reveal, they don't bounce. No easing that overshoots. */
+  --pdl-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --pdl-dur: 180ms;
+}
+
+/* Shadows: none. Elevation is expressed with a hairline, not a blur.
+   If something must sit above the page, give it a 1px --pdl-ink-line border. */

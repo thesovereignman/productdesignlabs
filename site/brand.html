@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brand Kit — Product Design Labs</title>
+<meta name="description" content="The Product Design Labs brand kit: the open box mark, the redline accent, engineering-document typography, and the rules that keep every asset inspectable.">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--pdl-sans);
+    background: var(--pdl-paper);
+    color: var(--pdl-ink);
+    font-size: var(--pdl-t-body);
+    line-height: var(--pdl-leading-body);
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: var(--pdl-maxw); margin: 0 auto; padding: 0 var(--pdl-space-4); }
+
+  h1, h2, h3 { font-family: var(--pdl-display); font-weight: 700; line-height: var(--pdl-leading-tight); letter-spacing: var(--pdl-track-display); }
+  h1 { font-size: var(--pdl-t-hero); letter-spacing: var(--pdl-track-hero); }
+  h2 { font-size: var(--pdl-t-h2); }
+  h3 { font-size: var(--pdl-t-h3); letter-spacing: -0.01em; }
+  p { max-width: 72ch; }
+  p + p { margin-top: var(--pdl-space-3); }
+  a { color: inherit; }
+
+  .eyebrow {
+    font-family: var(--pdl-mono); font-size: var(--pdl-t-micro);
+    letter-spacing: var(--pdl-track-mono); text-transform: uppercase;
+    display: block; margin-bottom: var(--pdl-space-3);
+  }
+  .lead { font-size: var(--pdl-t-lead); color: var(--pdl-grey-60); margin-top: var(--pdl-space-3); }
+  .mono { font-family: var(--pdl-mono); }
+  .note { font-family: var(--pdl-mono); font-size: var(--pdl-t-micro); color: var(--pdl-grey-60); letter-spacing: 0.04em; }
+
+  section { padding: var(--pdl-space-7) 0; border-bottom: var(--pdl-rule) solid var(--pdl-paper-line); }
+  section.ink { background: var(--pdl-ink); color: var(--pdl-paper); border-bottom-color: var(--pdl-ink-line); }
+  section.ink .lead, section.ink .note { color: var(--pdl-grey-40); }
+  .sec-head { margin-bottom: var(--pdl-space-5); }
+
+  /* --- masthead --- */
+  .masthead { padding: var(--pdl-space-6) 0 var(--pdl-space-7); }
+  .masthead .mark-row { display: flex; align-items: center; gap: var(--pdl-space-3); margin-bottom: var(--pdl-space-6); }
+  .meta-strip {
+    display: flex; flex-wrap: wrap; gap: var(--pdl-space-4);
+    margin-top: var(--pdl-space-5); padding-top: var(--pdl-space-3);
+    border-top: var(--pdl-rule) solid var(--pdl-paper-line);
+  }
+  .meta-strip div { font-family: var(--pdl-mono); font-size: var(--pdl-t-micro); letter-spacing: 0.08em; }
+  .meta-strip span { color: var(--pdl-grey-60); display: block; text-transform: uppercase; letter-spacing: var(--pdl-track-mono); }
+
+  /* --- generic grid --- */
+  .grid { display: grid; gap: var(--pdl-rule); background: var(--pdl-paper-line); border: var(--pdl-rule) solid var(--pdl-paper-line); }
+  .grid > * { background: var(--pdl-paper); padding: var(--pdl-space-4); }
+  .ink .grid { background: var(--pdl-ink-line); border-color: var(--pdl-ink-line); }
+  .ink .grid > * { background: var(--pdl-ink); }
+  .g2 { grid-template-columns: repeat(2, 1fr); }
+  .g3 { grid-template-columns: repeat(3, 1fr); }
+  .g4 { grid-template-columns: repeat(4, 1fr); }
+  @media (max-width: 860px) { .g3, .g4 { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .g2, .g3, .g4 { grid-template-columns: 1fr; } }
+
+  /* --- logo specimens --- */
+  .specimen { display: flex; align-items: center; justify-content: center; min-height: 150px; }
+  .specimen.on-ink { background: var(--pdl-ink); color: var(--pdl-paper); }
+  .specimen.on-paper { background: var(--pdl-paper); color: var(--pdl-ink); }
+  .cap { font-family: var(--pdl-mono); font-size: var(--pdl-t-micro); color: var(--pdl-grey-60); letter-spacing: 0.06em; margin-top: var(--pdl-space-2); display: block; }
+  .clearspace { position: relative; display: inline-block; padding: 24px; outline: var(--pdl-rule) dashed var(--pdl-redline); outline-offset: 0; }
+
+  /* --- colour --- */
+  .sw { border: var(--pdl-rule) solid var(--pdl-paper-line); }
+  .sw .chip { height: 108px; }
+  .sw .body { padding: var(--pdl-space-3); border-top: var(--pdl-rule) solid var(--pdl-paper-line); }
+  .sw .name { font-weight: 600; font-size: 0.95rem; }
+  .sw .hex, .sw .role { font-family: var(--pdl-mono); font-size: var(--pdl-t-micro); color: var(--pdl-grey-60); letter-spacing: 0.06em; display: block; }
+  .sw .hex { margin-top: 4px; }
+  .sw .role { margin-top: var(--pdl-space-2); line-height: 1.5; letter-spacing: 0.02em; }
+
+  /* --- type specimen --- */
+  .spec-row { padding: var(--pdl-space-4) 0; border-bottom: var(--pdl-rule) solid var(--pdl-paper-line); display: grid; grid-template-columns: 190px 1fr; gap: var(--pdl-space-4); align-items: baseline; }
+  .spec-row:last-child { border-bottom: 0; }
+  @media (max-width: 700px) { .spec-row { grid-template-columns: 1fr; gap: var(--pdl-space-2); } }
+  .spec-label { font-family: var(--pdl-mono); font-size: var(--pdl-t-micro); letter-spacing: var(--pdl-track-mono); text-transform: uppercase; color: var(--pdl-grey-60); }
+
+  /* --- annotation device --- */
+  .anno-demo { position: relative; border: var(--pdl-rule) solid var(--pdl-paper-line); padding: var(--pdl-space-5); background: var(--pdl-paper-2); }
+  .callout { display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; border: var(--pdl-rule) solid var(--pdl-redline); color: var(--pdl-redline-deep); font-family: var(--pdl-mono); font-size: 11px; line-height: 1; vertical-align: middle; }
+  .anno-line { display: inline-block; width: 56px; height: 0; border-top: var(--pdl-rule) solid var(--pdl-redline); vertical-align: middle; margin: 0 6px; }
+  .anno-item { display: flex; align-items: center; gap: 0; margin-bottom: var(--pdl-space-3); }
+  .anno-item:last-child { margin-bottom: 0; }
+  .anno-text { font-family: var(--pdl-mono); font-size: var(--pdl-t-small); }
+  .redline { color: var(--pdl-redline-deep); }
+  .ink .redline { color: var(--pdl-redline); }
+
+  /* --- stat wall (redline in use) --- */
+  .stat .num { font-family: var(--pdl-mono); font-size: 2.6rem; letter-spacing: -0.02em; line-height: 1; color: var(--pdl-redline); }
+  .stat .lbl { margin-top: var(--pdl-space-3); font-size: 0.95rem; }
+  .stat .src { font-family: var(--pdl-mono); font-size: var(--pdl-t-micro); letter-spacing: 0.1em; text-transform: uppercase; color: var(--pdl-grey-40); margin-top: var(--pdl-space-3); display: inline-block; border: var(--pdl-rule) solid var(--pdl-ink-line); padding: 3px 7px; }
+
+  /* --- do / don't --- */
+  .rule-list { list-style: none; }
+  .rule-list li { padding: var(--pdl-space-2) 0 var(--pdl-space-2) 26px; position: relative; border-bottom: var(--pdl-rule) solid var(--pdl-paper-line); font-size: 0.97rem; }
+  .rule-list li:last-child { border-bottom: 0; }
+  .rule-list li::before { position: absolute; left: 0; top: var(--pdl-space-2); font-family: var(--pdl-mono); font-size: 0.9rem; }
+  .do li::before { content: "+"; }
+  .dont li::before { content: "\00d7"; color: var(--pdl-redline-deep); }
+
+  /* --- imagery placeholders --- */
+  .plate { border: var(--pdl-rule) solid var(--pdl-paper-line); }
+  .plate .frame {
+    aspect-ratio: 3 / 2; display: flex; align-items: center; justify-content: center;
+    background:
+      repeating-linear-gradient(45deg, var(--pdl-grey-10) 0 1px, transparent 1px 9px),
+      var(--pdl-paper-2);
+    font-family: var(--pdl-mono); font-size: var(--pdl-t-micro); color: var(--pdl-grey-60);
+    letter-spacing: 0.08em; text-align: center; padding: var(--pdl-space-3);
+  }
+  .plate .frame.wide { aspect-ratio: 16 / 9; }
+  .plate .body { padding: var(--pdl-space-3); border-top: var(--pdl-rule) solid var(--pdl-paper-line); }
+
+  /* --- tables --- */
+  table { border-collapse: collapse; width: 100%; margin-top: var(--pdl-space-4); }
+  th, td { text-align: left; padding: var(--pdl-space-2) var(--pdl-space-3) var(--pdl-space-2) 0; border-bottom: var(--pdl-rule) solid var(--pdl-paper-line); vertical-align: top; font-size: 0.95rem; }
+  th { font-family: var(--pdl-mono); font-size: var(--pdl-t-micro); letter-spacing: var(--pdl-track-mono); text-transform: uppercase; color: var(--pdl-grey-60); font-weight: 400; }
+  td.m { font-family: var(--pdl-mono); font-size: 0.85rem; white-space: nowrap; }
+
+  /* --- social card mock --- */
+  .og {
+    background: var(--pdl-ink); color: var(--pdl-paper);
+    aspect-ratio: 1200 / 630; padding: var(--pdl-space-5);
+    display: flex; flex-direction: column; justify-content: space-between;
+    background-image: linear-gradient(var(--pdl-ink-2) 1px, transparent 1px), linear-gradient(90deg, var(--pdl-ink-2) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .og h3 { font-size: clamp(1.2rem, 3.2vw, 2.2rem); max-width: 20ch; }
+
+  a:focus-visible, :focus-visible { outline: var(--pdl-rule-bold) solid var(--pdl-ink); outline-offset: 2px; }
+  .ink :focus-visible { outline-color: var(--pdl-paper); }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation: none !important; transition: none !important; } }
+
+  footer { padding: var(--pdl-space-6) 0; }
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="wrap">
+    <div class="mark-row">
+      <svg width="34" height="34" viewBox="0 0 48 48" aria-hidden="true" style="color: var(--pdl-ink)">
+        <g fill="none" stroke="currentColor" stroke-width="3"><path d="M30 4H4v40h26"/><path d="M30 4l14 8v24l-14 8z"/></g>
+        <rect x="12" y="18" width="12" height="12" fill="currentColor"/>
+      </svg>
+      <span class="mono" style="font-size: var(--pdl-t-micro); letter-spacing: var(--pdl-track-mono); text-transform: uppercase;">Product Design Labs</span>
+    </div>
+    <span class="eyebrow">Brand kit — v1.0</span>
+    <h1>Not impressive. Inspectable.</h1>
+    <p class="lead">PDL sells certainty in a category defined by its horror stories. So the brand's job is not to look impressive — impressive is what the black box sells. Our aesthetic is an engineering document: mono type, hairline rules, real measurements, visible corrections.</p>
+    <div class="meta-strip">
+      <div><span>Category</span>Open Product Development</div>
+      <div><span>Enemy</span>Black-box product development</div>
+      <div><span>Word we own</span>open</div>
+      <div><span>Rallying cry</span>Nothing behind the curtain</div>
+    </div>
+  </div>
+</header>
+
+<!-- LOGO -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">01 — The mark</span>
+      <h2>The Open Box.</h2>
+      <p class="lead">An enclosure whose right panel has swung open, contents plainly visible. The enemy and the answer in one figure: the same box the industry hides behind, opened.</p>
+    </div>
+
+    <div class="grid g3">
+      <div>
+        <div class="specimen on-paper">
+          <svg width="72" height="72" viewBox="0 0 48 48" role="img" aria-label="PDL mark, ink on paper">
+            <g fill="none" stroke="currentColor" stroke-width="3"><path d="M30 4H4v40h26"/><path d="M30 4l14 8v24l-14 8z"/></g>
+            <rect x="12" y="18" width="12" height="12" fill="currentColor"/>
+          </svg>
+        </div>
+        <span class="cap">pdl-mark.svg — ink on paper</span>
+      </div>
+      <div>
+        <div class="specimen on-ink">
+          <svg width="72" height="72" viewBox="0 0 48 48" role="img" aria-label="PDL mark, paper on ink">
+            <g fill="none" stroke="currentColor" stroke-width="3"><path d="M30 4H4v40h26"/><path d="M30 4l14 8v24l-14 8z"/></g>
+            <rect x="12" y="18" width="12" height="12" fill="currentColor"/>
+          </svg>
+        </div>
+        <span class="cap">pdl-mark.svg — paper on ink</span>
+      </div>
+      <div>
+        <div class="specimen on-paper">
+          <svg width="72" height="72" viewBox="0 0 48 48" role="img" aria-label="PDL mark with redline contents">
+            <g fill="none" stroke="currentColor" stroke-width="3"><path d="M30 4H4v40h26"/><path d="M30 4l14 8v24l-14 8z"/></g>
+            <rect x="12" y="18" width="12" height="12" fill="#D93A2B"/>
+          </svg>
+        </div>
+        <span class="cap">pdl-mark-redline.svg — covers, decks, merch only</span>
+      </div>
+    </div>
+
+    <div class="grid g2" style="margin-top: var(--pdl-space-4);">
+      <div>
+        <div class="specimen on-paper">
+          <svg width="280" height="42" viewBox="0 0 320 48" role="img" aria-label="Product Design Labs horizontal lockup">
+            <g fill="none" stroke="currentColor" stroke-width="3"><path d="M30 4H4v40h26"/><path d="M30 4l14 8v24l-14 8z"/></g>
+            <rect x="12" y="18" width="12" height="12" fill="currentColor"/>
+            <text x="68" y="30" font-family="Inter Tight, Inter, Helvetica, Arial, sans-serif" font-size="19" font-weight="700" letter-spacing="-0.4" fill="currentColor">Product Design Labs</text>
+            <text x="68" y="43" font-family="JetBrains Mono, SF Mono, ui-monospace, monospace" font-size="8" letter-spacing="2.2" fill="currentColor" opacity="0.62">OPEN PRODUCT DEVELOPMENT</text>
+          </svg>
+        </div>
+        <span class="cap">pdl-lockup-horizontal.svg — default. Min width 200px</span>
+      </div>
+      <div>
+        <div class="specimen on-ink">
+          <svg width="240" height="29" viewBox="0 0 268 32" role="img" aria-label="Product Design Labs compact lockup">
+            <g fill="none" stroke="currentColor" stroke-width="2" transform="translate(0,2) scale(0.583)"><path d="M30 4H4v40h26"/><path d="M30 4l14 8v24l-14 8z"/></g>
+            <rect x="7" y="12.5" width="7" height="7" fill="currentColor"/>
+            <text x="42" y="22" font-family="Inter Tight, Inter, Helvetica, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="-0.4" fill="currentColor">Product Design Labs</text>
+          </svg>
+        </div>
+        <span class="cap">pdl-lockup-compact.svg — nav, signatures. Min width 120px</span>
+      </div>
+    </div>
+
+    <div class="grid g2" style="margin-top: var(--pdl-space-4);">
+      <div>
+        <div class="specimen on-paper">
+          <span class="clearspace">
+            <svg width="60" height="60" viewBox="0 0 48 48" aria-hidden="true">
+              <g fill="none" stroke="currentColor" stroke-width="3"><path d="M30 4H4v40h26"/><path d="M30 4l14 8v24l-14 8z"/></g>
+              <rect x="12" y="18" width="12" height="12" fill="currentColor"/>
+            </svg>
+          </span>
+        </div>
+        <span class="cap">Clear space = width of the contents square (25% of mark height). Nothing enters it.</span>
+      </div>
+      <div>
+        <h3>Never</h3>
+        <ul class="rule-list dont" style="margin-top: var(--pdl-space-3);">
+          <li>Re-colour to anything but ink, paper, or redline contents</li>
+          <li>Gradient, bevel, drop shadow, glow — the brand has no shadows at all</li>
+          <li>Round the corners or stretch either axis</li>
+          <li>Hand-set the wordmark beside the mark instead of using the SVG</li>
+          <li>Place it in a circle or a rounded app bubble of your own making</li>
+          <li>Animate the panel closing. The box opens; it does not close</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COLOUR -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">02 — Colour</span>
+      <h2>Colour is information, never decoration.</h2>
+      <p class="lead">Mono-first, with exactly one accent: the DFM reviewer's pen. Redline appears where a black-box studio would have stayed quiet — a cost, a callout, a failure, a number that hurts. Target: under 3% of any surface.</p>
+    </div>
+
+    <div class="grid g4">
+      <div class="sw" style="padding:0"><div class="chip" style="background:#111111"></div><div class="body"><span class="name">PDL Ink</span><span class="hex">#111111 · --pdl-ink</span><span class="role">Primary. Type, rules, the mark.</span></div></div>
+      <div class="sw" style="padding:0"><div class="chip" style="background:#FFFFFF; border-bottom:1px solid var(--pdl-paper-line)"></div><div class="body"><span class="name">PDL Paper</span><span class="hex">#FFFFFF · --pdl-paper</span><span class="role">Primary surface.</span></div></div>
+      <div class="sw" style="padding:0"><div class="chip" style="background:#000000"></div><div class="body"><span class="name">Curtain Black</span><span class="hex">#000000 · --pdl-black</span><span class="role">Depicts the enemy only. Never a general background.</span></div></div>
+      <div class="sw" style="padding:0"><div class="chip" style="background:#D93A2B"></div><div class="body"><span class="name">Redline</span><span class="hex">#D93A2B · --pdl-redline</span><span class="role">The one accent. Annotation, correction, the indicting number.</span></div></div>
+    </div>
+
+    <div class="grid g4" style="margin-top: var(--pdl-space-4);">
+      <div class="sw" style="padding:0"><div class="chip" style="background:#A62A1E; height:64px"></div><div class="body"><span class="name">Redline Deep</span><span class="hex">#A62A1E</span><span class="role">Redline as text on paper. Passes AA; plain redline does not.</span></div></div>
+      <div class="sw" style="padding:0"><div class="chip" style="background:#5C5C5C; height:64px"></div><div class="body"><span class="name">Grey 60</span><span class="hex">#5C5C5C</span><span class="role">Muted body on paper.</span></div></div>
+      <div class="sw" style="padding:0"><div class="chip" style="background:#0F7A6B; height:64px"></div><div class="body"><span class="name">Verified</span><span class="hex">#0F7A6B</span><span class="role">Product UI only. Gate passed, files transferred.</span></div></div>
+      <div class="sw" style="padding:0"><div class="chip" style="background:#B87503; height:64px"></div><div class="body"><span class="name">Caution</span><span class="hex">#B87503</span><span class="role">Product UI only. Respin risk, estimate not a quote.</span></div></div>
+    </div>
+
+    <div class="grid g2" style="margin-top: var(--pdl-space-4);">
+      <div>
+        <h3>Redline is for</h3>
+        <ul class="rule-list do" style="margin-top: var(--pdl-space-3);">
+          <li>Annotation leaders and callout numbers</li>
+          <li>The stat that indicts the old model — 90%, 2.9&times;, $70K</li>
+          <li>"What we quoted vs. what it cost" deltas</li>
+          <li>The underline on a damaging admission</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Redline is never</h3>
+        <ul class="rule-list dont" style="margin-top: var(--pdl-space-3);">
+          <li>A section background</li>
+          <li>A hover state</li>
+          <li>A decorative rule</li>
+          <li>A chart's default series colour</li>
+          <li>The colour of a CTA that says "Get in touch"</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TYPE -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">03 — Typography</span>
+      <h2>If it is a measurement, it is mono.</h2>
+      <p class="lead">Inter Tight for headlines, Inter for body, JetBrains Mono for anything that is a measurement. That last rule is the most identity-carrying habit PDL has: it separates claims from numbers on every page, which is the entire positioning.</p>
+    </div>
+
+    <div style="border: var(--pdl-rule) solid var(--pdl-paper-line); padding: 0 var(--pdl-space-4);">
+      <div class="spec-row">
+        <span class="spec-label">Display / 700 / -0.03em</span>
+        <span style="font-family: var(--pdl-display); font-weight:700; font-size: clamp(1.9rem,4vw,3rem); letter-spacing:-0.03em; line-height:1.12;">Hardware development with nothing to hide.</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">H2 / 700 / -0.02em</span>
+        <span style="font-family: var(--pdl-display); font-weight:700; font-size: clamp(1.4rem,2.6vw,2rem); letter-spacing:-0.02em;">The black box is the business model.</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Body / 400 / 17px / 1.55</span>
+        <span style="max-width:60ch; display:block;">Hardware isn't doomed. The development model founders are forced to hire is. When the process is a black box, misalignment isn't a bug — it's the incentive.</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Mono eyebrow / 0.18em</span>
+        <span class="mono" style="font-size: var(--pdl-t-micro); letter-spacing: var(--pdl-track-mono); text-transform: uppercase;">The stakes</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-label">Mono data</span>
+        <span class="mono" style="font-size:0.95rem;">EVT · DVT · PVT — 2.9&times; respins — $28–70K each — REV C — 2026-08-18</span>
+      </div>
+    </div>
+    <p class="note" style="margin-top: var(--pdl-space-3);">Both families are SIL OFL. Self-host them; never hotlink a font CDN in a client deliverable. This page is rendering on system fallbacks and still reads correctly — that is the test any type decision must pass.</p>
+  </div>
+</section>
+
+<!-- ANNOTATION DEVICE + REDLINE IN USE -->
+<section class="ink">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">04 — The signature device</span>
+      <h2>The annotation.</h2>
+      <p class="lead">A hairline leader from a redline callout to the thing it explains — exactly as a drawing is marked up. Use it to expose what a black-box studio would leave unlabelled. Orthogonal or 45° leaders only, never a curve. Maximum three per figure.</p>
+    </div>
+
+    <div class="grid g2">
+      <div>
+        <div class="anno-item"><span class="callout" style="color: var(--pdl-redline)">1</span><span class="anno-line"></span><span class="anno-text">DFM review — day one, not month four</span></div>
+        <div class="anno-item"><span class="callout" style="color: var(--pdl-redline)">2</span><span class="anno-line"></span><span class="anno-text">Respin budget — printed in the SOW</span></div>
+        <div class="anno-item"><span class="callout" style="color: var(--pdl-redline)">3</span><span class="anno-line"></span><span class="anno-text">Files transfer at this gate, not at the end</span></div>
+        <span class="cap" style="color: var(--pdl-grey-40)">Callout in mono redline, 1px redline square, 1px leader.</span>
+      </div>
+      <div>
+        <h3>Redline earning its place</h3>
+        <div class="grid g2" style="margin-top: var(--pdl-space-3); border:0; background: var(--pdl-ink-line);">
+          <div class="stat"><div class="num">90%</div><div class="lbl">of first prototypes fail to meet their goals.</div><span class="src">Cadstrom</span></div>
+          <div class="stat"><div class="num">2.9&times;</div><div class="lbl">board respins per project, up to $70K true cost each.</div><span class="src">EMA-EDA</span></div>
+        </div>
+        <p class="note" style="margin-top: var(--pdl-space-3);">Numbers before adjectives. Every stat carries a source chip — uncited numbers are what the black box does.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMAGERY -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">05 — Imagery</span>
+      <h2>The render is the enemy's medium.</h2>
+      <p class="lead">The industry's signature failure is the beautiful render that cannot be built. PDL therefore does not lead with renders. Real benches, real hands, real light — and captions, in mono, on every single image.</p>
+    </div>
+
+    <div class="grid g2">
+      <div>
+        <h3>Shoot / source</h3>
+        <ul class="rule-list do" style="margin-top: var(--pdl-space-3);">
+          <li>Real benches and hands. Flux residue, a scuffed anodised part</li>
+          <li>PCBs with test points probed; calipers on a dimension; mould steel</li>
+          <li>Failed parts, kept and photographed as evidence</li>
+          <li>Screens as they actually look — CAD with the tree open, a BOM in a spreadsheet</li>
+          <li>Process over product. Someone doing the work beats the object on a seamless</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Never</h3>
+        <ul class="rule-list dont" style="margin-top: var(--pdl-space-3);">
+          <li>Studio-lit hero renders on gradient seamless backgrounds. Ever</li>
+          <li>Glowing circuit-board abstractions, hands holding light, blue tech gradients</li>
+          <li>Anything implying a factory or facility PDL does not have</li>
+          <li>People pointing at a whiteboard</li>
+          <li>Duotone filters or a warm/teal grade</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid g3" style="margin-top: var(--pdl-space-4);">
+      <div class="plate" style="padding:0">
+        <div class="frame wide">01 · BLACK BOX / GLASS BOX<br>16:9 — concept, ships</div>
+        <div class="body"><span class="cap" style="margin-top:0">Sealed enclosure beside an opened one. Site hero, deck slide 5, OG image.</span></div>
+      </div>
+      <div class="plate" style="padding:0">
+        <div class="frame">03 · REDLINE DRAWING<br>3:2 — reference plate</div>
+        <div class="body"><span class="cap" style="margin-top:0">Marked-up drawing with calipers. Where the accent comes from.</span></div>
+      </div>
+      <div class="plate" style="padding:0">
+        <div class="frame wide">06 · FAILURE ARCHIVE<br>16:9 — reference plate</div>
+        <div class="body"><span class="cap" style="margin-top:0">Six rejected parts, tagged. The candor asset.</span></div>
+      </div>
+    </div>
+    <p class="note" style="margin-top: var(--pdl-space-3);">Ten plates were generated to define this look — manifest, prompts and retrieval steps in <span class="mono">brand/assets/README.md</span>. Concept and texture plates may ship. Everything else is reference for a real shoot: <strong>AI imagery is never presented as a PDL build.</strong></p>
+
+    <h3 style="margin-top: var(--pdl-space-5);">Captions are mandatory</h3>
+    <p style="margin-top: var(--pdl-space-2);">Every image says what it is and at what stage. An uncaptioned photo is decoration, and decoration is what the black box uses.</p>
+    <p class="mono" style="margin-top: var(--pdl-space-2); font-size: var(--pdl-t-small); border-left: var(--pdl-rule-bold) solid var(--pdl-ink); padding-left: var(--pdl-space-3);">DVT2 enclosure, tool-marked — draft angle corrected after first shots</p>
+  </div>
+</section>
+
+<!-- VOICE -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">06 — Voice</span>
+      <h2>An engineer who respects you enough to tell you the bad news first.</h2>
+    </div>
+
+    <div class="grid g3">
+      <div><h3>1 · Numbers before adjectives</h3><p style="margin-top:var(--pdl-space-2); font-size:0.95rem;">Not "significant rework" — "2.9 respins, $28–70K each." A claim without a number is one the market has already heard.</p></div>
+      <div><h3>2 · Name the failure mode</h3><p style="margin-top:var(--pdl-space-2); font-size:0.95rem;">Every promise is stated as the burn it prevents. Files at every milestone <em>because</em> withheld files strand founders.</p></div>
+      <div><h3>3 · Say the expensive thing</h3><p style="margin-top:var(--pdl-space-2); font-size:0.95rem;">"Your project will probably need three board revisions" is our best line precisely because no competitor will print it.</p></div>
+      <div><h3>4 · Cite the source</h3><p style="margin-top:var(--pdl-space-2); font-size:0.95rem;">Stats carry a visible source chip. Uncited numbers are what the black box does.</p></div>
+      <div><h3>5 · Short sentences, plain words</h3><p style="margin-top:var(--pdl-space-2); font-size:0.95rem;">Expand every acronym on first use. The customer is technical-enough, not an expert.</p></div>
+      <div><h3>6 · No hype vocabulary</h3><p style="margin-top:var(--pdl-space-2); font-size:0.95rem;">Banned: cutting-edge, seamless, world-class, turnkey, end-to-end, unlock, elevate, game-changing.</p></div>
+    </div>
+
+    <table>
+      <thead><tr><th>Don't say</th><th>Say</th></tr></thead>
+      <tbody>
+        <tr><td>Get a quote</td><td><strong>See the math</strong></td></tr>
+        <tr><td>Trust our portfolio</td><td><strong>Watch the process</strong></td></tr>
+        <tr><td>Deliverables on completion</td><td><strong>Yours at every milestone</strong></td></tr>
+        <tr><td>Fast turnaround</td><td><strong>Honest stage gates</strong></td></tr>
+        <tr><td>Dev shop / agency</td><td><strong>Open product development studio</strong></td></tr>
+        <tr><td>Solutions</td><td><strong>The work, the build, the files</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- APPLICATION -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">07 — Application</span>
+      <h2>The social card.</h2>
+      <p class="lead">Ink field, compact lockup top-left, one line at hero scale, one mono stat beneath. Redline only if there is a number to indict. No photo behind type.</p>
+    </div>
+    <div class="grid g2">
+      <div style="padding:0">
+        <div class="og">
+          <svg width="180" height="22" viewBox="0 0 268 32" aria-hidden="true">
+            <g fill="none" stroke="currentColor" stroke-width="2" transform="translate(0,2) scale(0.583)"><path d="M30 4H4v40h26"/><path d="M30 4l14 8v24l-14 8z"/></g>
+            <rect x="7" y="12.5" width="7" height="7" fill="currentColor"/>
+            <text x="42" y="22" font-family="Inter Tight, Inter, Helvetica, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="-0.4" fill="currentColor">Product Design Labs</text>
+          </svg>
+          <div>
+            <h3>Your hardware project will probably need three board revisions.</h3>
+            <p class="mono" style="margin-top: var(--pdl-space-3); font-size: var(--pdl-t-micro); letter-spacing: 0.1em;"><span class="redline">2.9&times; AVG RESPINS</span> · $28–70K EACH · EMA-EDA</p>
+          </div>
+        </div>
+        <span class="cap" style="padding: 0 var(--pdl-space-3) var(--pdl-space-3)">1200×630 · candor-lead variant</span>
+      </div>
+      <div>
+        <h3>Surfaces at a glance</h3>
+        <table style="margin-top: var(--pdl-space-3);">
+          <tbody>
+            <tr><td class="m">SITE</td><td>Problem-first, evidence-heavy. Leads with the enemy</td></tr>
+            <tr><td class="m">DECK</td><td>Enemy slides on curtain black, category reveal breaks to paper</td></tr>
+            <tr><td class="m">DEVLOG</td><td>First person, present tense, includes what broke. No hero graphic</td></tr>
+            <tr><td class="m">SOW</td><td>Hairline tables, mono figures. Respin budget is the only redline</td></tr>
+            <tr><td class="m">EMAIL</td><td>One number, one artifact, one ask. Compact lockup, no banner</td></tr>
+            <tr><td class="m">MERCH</td><td>The mark, ink on paper or paper on ink</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEST -->
+<section class="ink">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">08 — Before anything ships</span>
+      <h2>The ten-second test.</h2>
+    </div>
+    <div class="grid g2">
+      <div>
+        <ol style="list-style:none; counter-reset:t;">
+          <li style="padding: var(--pdl-space-3) 0; border-bottom: var(--pdl-rule) solid var(--pdl-ink-line);"><span class="mono redline" style="margin-right: var(--pdl-space-3);">01</span>Could this have come from any other product studio? If yes, it's wrong.</li>
+          <li style="padding: var(--pdl-space-3) 0; border-bottom: var(--pdl-rule) solid var(--pdl-ink-line);"><span class="mono redline" style="margin-right: var(--pdl-space-3);">02</span>Is there a number on it? If not, why not?</li>
+          <li style="padding: var(--pdl-space-3) 0;"><span class="mono redline" style="margin-right: var(--pdl-space-3);">03</span>Is the accent doing a job, or is it decoration?</li>
+        </ol>
+      </div>
+      <div>
+        <ol style="list-style:none;">
+          <li style="padding: var(--pdl-space-3) 0; border-bottom: var(--pdl-rule) solid var(--pdl-ink-line);"><span class="mono redline" style="margin-right: var(--pdl-space-3);">04</span>Does it show the work, or the outcome? Show the work.</li>
+          <li style="padding: var(--pdl-space-3) 0;"><span class="mono redline" style="margin-right: var(--pdl-space-3);">05</span>Would we be comfortable if the client saw this mid-stream? That is the whole brand.</li>
+        </ol>
+        <p class="note" style="margin-top: var(--pdl-space-4);">Full rules, brand architecture, accessibility floor and open items: <span class="mono">brand/BRAND-KIT.md</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="note">Product Design Labs — Brand Kit v1.0 · 2026-08-18 · Internal reference, noindex</p>
+    <p class="note" style="margin-top: var(--pdl-space-2);">We publish our process because a process worth trusting is one you can watch.</p>
+  </div>
+</footer>
+
+</body>
+</html>
